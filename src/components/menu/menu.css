@@ -28,31 +28,32 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    padding: 2em;
-    background: #c5fb45;
+    padding: 4em; /* Augmenter le padding */
+    background: hsl(196, 52%, 61%);
     z-index: 2; 
     display: flex;
+    flex-direction: row; /* Disposition horizontale par défaut */
     clip-path: polygon(0 0, 100% 0, 100% 0%, 0 -0.02em);
 }
 
-
 .menu-close-icon {
-    flex: 2;
+    flex: 1;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start; /* Aligner en haut */
     cursor: pointer;
 }
 
 .menu-copy {
-   flex: 4;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
-   padding-top: 2em; 
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Aligner en haut */
+    padding-top: 4em; /* Augmenter le padding */
+    gap: 2.5em; /* Espacement entre les éléments */
 }
 
 .menu-preview {
-    flex: 4;
+    flex: 2;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
@@ -60,7 +61,7 @@
 
 .menu-close-icon p {
     font-size: 100px;
-    -webkit-text-stroke: 5px #c5fb45;
+    -webkit-text-stroke: 5px #000000;
     line-height: 70%;
 }
 
@@ -75,24 +76,104 @@
 
 .menu-link-item-holder a {
     color: #000;
-    font-size: 80px;
+    font-size: 100px; /* Augmenter la taille de la police */
     font-weight: 400;
     letter-spacing: -0.02em;
-    line-height: 85%    ;
+    line-height: 85%;
+    transition: color 0.3s ease; /* Ajouter une transition pour l'interactivité */
+}
+
+.menu-link-item-holder a:hover {
+    color: #fff; /* Changement de couleur au survol */
+}
+
+.menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em; /* Espacement entre les liens */
 }
 
 .menu-info {
     display: flex;
+    gap: 4em; /* Espacement entre les colonnes */
+    margin-top: auto; /* Aligner en bas */
 }
 
 .menu-info-col {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;     
+    justify-content: flex-end;
+    gap: 1em; /* Espacement entre les éléments dans les colonnes */
 }
 
-@media(max-width:900px) {
+.menu-info-col a,
+.menu-info-col p {
+    font-size: 24px; /* Augmenter la taille de la police */
+    color: #000;
+    text-decoration: none;
+}
+
+.menu-info-col a:hover {
+    text-decoration: underline; /* Effet de survol */
+}
+
+@media (max-width: 1199px) {
+    .menu-link-item-holder a {
+        font-size: 80px; /* Réduire la taille de la police */
+    }
+
+    .menu-info-col a,
+    .menu-info-col p {
+        font-size: 20px; /* Réduire la taille de la police */
+    }
+
+    .menu-copy {
+        padding-top: 3em; /* Réduire le padding */
+    }
+
+    .menu-close p {
+        display: none;
+    }
+}
+
+@media (max-width: 991px) {
+    .menu-overlay {
+        flex-direction: column; /* Disposition verticale */
+    }
+
+    .menu-close-icon {
+        display: none; /* Masquer l'icône de fermeture */
+    }
+
+    .menu-copy {
+        padding-top: 6em; /* Ajuster le padding */
+    }
+
+    .menu-link-item-holder a {
+        font-size: 60px; /* Réduire la taille de la police */
+    }
+
+    .menu-info {
+        flex-direction: column; /* Empiler les colonnes */
+        gap: 1.5em; /* Ajuster l'espacement */
+    }
+
+    .menu-info-col a,
+    .menu-info-col p {
+        font-size: 18px; /* Réduire la taille de la police */
+    }
+
+    .menu-close p {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .menu-overlay {
+        flex-direction: column; /* Disposition verticale pour les petits écrans */
+    }
+
     .menu-close-icon {
         display: none;
     }
@@ -101,7 +182,117 @@
         padding-top: 8em;
     }
 
-    .menu-link-item-holder {
-        font-size: 60px !important;
+    .menu-link-item-holder a {
+        font-size: 60px; /* Taille de police réduite pour les petits écrans */
+    }
+
+    .menu-info {
+        flex-direction: column; /* Empiler les colonnes sur les petits écrans */
+        gap: 1.5em;
+    }
+
+    .menu-info-col a,
+    .menu-info-col p {
+        font-size: 18px; /* Taille de police réduite pour les petits écrans */
+    }
+
+    .menu-preview {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .menu-link-item-holder a {
+        font-size: 40px; /* Réduire la taille de la police */
+    }
+
+    .menu-info-col a,
+    .menu-info-col p {
+        font-size: 16px; /* Réduire la taille de la police */
+    }
+
+    .menu-copy {
+        padding-top: 4em; /* Ajuster le padding */
+    }
+
+    .menu-links {
+        gap: 1em; /* Réduire l'espacement entre les liens */
+    }
+
+    .menu-info {
+        gap: 1em; /* Réduire l'espacement entre les colonnes */
+    }
+}
+
+@media (max-width: 575px) {
+    .menu-link-item-holder a {
+        font-size: 30px; /* Réduire la taille de la police */
+    }
+
+    .menu-info-col a,
+    .menu-info-col p {
+        font-size: 14px; /* Réduire la taille de la police */
+    }
+
+    .menu-copy {
+        padding-top: 2em; /* Ajuster le padding */
+    }
+
+    .menu-links {
+        gap: 0.5em; /* Réduire l'espacement entre les liens */
+    }
+
+    .menu-info {
+        gap: 0.5em; /* Réduire l'espacement entre les colonnes */
+    }
+
+    .menu-preview {
+        display: none;
+    }
+}
+
+@media (max-width: 991px) and (orientation: landscape) {
+    .menu-overlay {
+        padding: 2em; /* Réduire le padding */
+    }
+
+    .menu-link-item-holder a {
+        font-size: 50px; /* Ajuster la taille de la police */
+    }
+
+    .menu-info-col a,
+    .menu-info-col p {
+        font-size: 16px; /* Ajuster la taille de la police */
+    }
+
+    .menu-copy {
+        padding-top: 3em; /* Ajuster le padding */
+    }
+
+    .menu-preview {
+        display: none;
+    }
+}
+
+@media (max-width: 991px) and (orientation: portrait) {
+    .menu-overlay {
+        padding: 4em; /* Ajuster le padding */
+    }
+
+    .menu-link-item-holder a {
+        font-size: 40px; /* Ajuster la taille de la police */
+    }
+
+    .menu-info-col a,
+    .menu-info-col p {
+        font-size: 14px; /* Ajuster la taille de la police */
+    }
+
+    .menu-copy {
+        padding-top: 6em; /* Ajuster le padding */
+    }
+
+    .menu-preview {
+        display: none;
     }
 }
